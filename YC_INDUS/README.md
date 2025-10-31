@@ -1,9 +1,9 @@
-# $PROJE_ADI
+  INDUS ÇÖZÜMLEYİCİSİ
 
 Bu proje, Iravatham Mahadevan'ın 1977 tarihli korpusunu kullanarak İndus yazıtları üzerinde
 veri işleme ve sıralı dil modelleri (sequential language models) geliştirmeyi amaçlamaktadır.
 
-## Proje Yapısı
+  DOSYA YAPISI 
 
 - \`data/\`: Veri dosyaları
   - \`raw\`: Orijinal, dokunulmamış transkripsiyon metinleri.
