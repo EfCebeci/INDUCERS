@@ -7,12 +7,12 @@ __pycache__/
 .ipynb_checkpoints
 
 # Veri & Modeller (DVC ile takip edilecekse)
-data/processed/
-data/raw/
-models/
-*.csv
-*.jsonl
-*.parquet
+# data/processed/
+# data/raw/
+# models/
+# *.csv
+# *.jsonl
+# *.parquet
 
 # Sistem Dosyaları
 .DS_Store
