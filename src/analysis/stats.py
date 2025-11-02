@@ -8,13 +8,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 RAW_DATA_PATH = os.path.join(BASE_DIR, 'data', 'raw', 'TamilTB.v0.1.utf8.conll')
 REPORTS_DIR = os.path.join(BASE_DIR, 'reports')
 
-SUPER_BREAD_PATH = os.path.join(REPORTS_DIR, '00_INDUCERS_Super_Bread.csv')
+RICH_DATAFRAME_PATH = os.path.join(REPORTS_DIR, '00_INDUCERS_Rich_Dataframe.csv')
 
 def load_rich_corpus_from_conll(filepath):
-    """
-    INDUCERS Makine 2 (v9.0): 
-    "Yeni Süper-Ekmek"i (.conll) "zengin" (rich) bir Pandas DataFrame'e dönüştürür.
-    """
+
     print(f"[Makine 2.1] 'Zengin Ekmek' ({filepath}) yükleniyor...")
     
     try:
@@ -81,8 +78,8 @@ def main():
     
     df = load_rich_corpus_from_conll(RAW_DATA_PATH)
     
-    print(f"[Makine 2.1] 'Süper-Ekmek' (Zengin CSV) kaydediliyor: {SUPER_BREAD_PATH}")
-    df.to_csv(SUPER_BREAD_PATH, index=False, encoding='utf-8')
+    print(f"[Makine 2.1] 'Süper-Ekmek' (Zengin CSV) kaydediliyor: {RICH_DATAFRAME_PATH}")
+    df.to_csv(RICH_DATAFRAME_PATH, index=False, encoding='utf-8')
     print("  -> 'Süper-Ekmek' kaydedildi. (Eşleştirme için bu dosyayı açın)")
     
     
@@ -90,7 +87,7 @@ def main():
     
     print("\n--- BISH BASH BOSH! (v9.0) ---")
     print(f"KANITLAR (Özet Raporlar) VE 'SÜPER-EKMEK' (Zengin CSV) 'reports/' klasöründe üretildi.")
-    print(f"\nEŞLEŞTİRME İÇİN: '{SUPER_BREAD_PATH}' dosyasını açın.")
+    print(f"\nEŞLEŞTİRME İÇİN: '{RICH_DATAFRAME_PATH}' dosyasını açın.")
 
 if __name__ == "__main__":
     main()

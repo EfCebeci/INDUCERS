@@ -2,8 +2,6 @@ import json
 from pathlib import Path
 import sys
 
-# Projenin kök dizinini otomatik olarak bul
-# (Bu script 'src/data_processing' içinde olduğu için 3 seviye yukarı çıkıyoruz)
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 MAP_PATH = BASE_DIR / "data/interim/allograph_map.json"
 RAW_DIR = BASE_DIR / "data/raw/"
@@ -24,7 +22,6 @@ def haritayi_yukle(map_path):
 def ham_kulliyati_yukle(raw_dir):
     print(f"Ham transkripsiyonlar yükleniyor: {raw_dir}")
     raw_corpus = []
-    # Kural: 'data/raw/' içindeki tüm '.txt' dosyalarını oku
     files = list(raw_dir.glob("*.txt"))
     if not files:
         print(f"UYARI: '{raw_dir}' içinde hiç '.txt' dosyası bulunamadı.", file=sys.stderr)
@@ -50,7 +47,6 @@ def kulliyati_normallestir(raw_corpus, allograph_map):
     for raw_inscription in raw_corpus:
         normalized_inscription = []
         for raw_sign in raw_inscription:
-            # Kural: Haritada varsa ana formu al, yoksa kendisini al
             normalized_sign = allograph_map.get(raw_sign, raw_sign)
             normalized_inscription.append(normalized_sign)
             normalized_vocabulary.add(normalized_sign)
@@ -62,12 +58,10 @@ def kulliyati_normallestir(raw_corpus, allograph_map):
 
 def sonuclari_kaydet(processed_path, normalized_corpus, file_names):
     print(f"İşlenmiş diziler şuraya kaydediliyor: {processed_path}")
-    # Klasörün var olduğundan emin ol
     processed_path.parent.mkdir(parents=True, exist_ok=True)
     
     with open(processed_path, 'w', encoding='utf-8') as f:
         for i, inscription in enumerate(normalized_corpus):
-            # 'dizi' (bizim uyumlu anahtarımız) ve 'kaynak_dosya'yı kaydet
             line_data = {"dizi": inscription, "kaynak_dosya": file_names[i]}
             json.dump(line_data, f)
             f.write('\n')
