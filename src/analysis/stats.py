@@ -12,7 +12,7 @@ RICH_DATAFRAME_PATH = os.path.join(REPORTS_DIR, '00_INDUCERS_Rich_Dataframe.csv'
 
 def load_rich_corpus_from_conll(filepath):
 
-    print(f"[Makine 2.1] 'Zengin Ekmek' ({filepath}) yükleniyor...")
+    print(f"[Makine 2.1] ({filepath}) yükleniyor...")
     
     try:
         data_file = open(filepath, "r", encoding="utf-8")
@@ -20,7 +20,7 @@ def load_rich_corpus_from_conll(filepath):
         print(f"[Makine 2.1] HATA: {e}")
         sys.exit(1)
 
-    print("[Makine 2.1] 'Zengin Ekmek' (.conll) 'Pandas' (DataFrame) haline getiriliyor...")
+    print("[Makine 2.1] (.conll) 'Pandas' (DataFrame) haline getiriliyor...")
     parsed_data = []
     
     for sentence_index, tokenlist in enumerate(parse_incr(data_file)):
@@ -45,10 +45,7 @@ def load_rich_corpus_from_conll(filepath):
     return df
 
 def analyze_and_save_structure(df, reports_dir):
-    """
-    KANIT (v8.0): "Özet Raporları" (Aggregate) üretir.
-    """
-    print(f"[Makine 2.1] 'Zengin Ekmek' (Pandas) Yapısal Analizi başlatılıyor...")
+    print(f"[Makine 2.1] Yapısal Analiz başlatılıyor...")
         
     os.makedirs(reports_dir, exist_ok=True)
     
@@ -80,7 +77,7 @@ def main():
     
     print(f"[Makine 2.1] kaydediliyor: {RICH_DATAFRAME_PATH}")
     df.to_csv(RICH_DATAFRAME_PATH, index=False, encoding='utf-8')
-    print("  -> 'Süper-Ekmek' kaydedildi. (Eşleştirme için bu dosyayı açın)")
+    print("Kaydedildi. (Eşleştirme için bu dosyayı açın)")
     
     
     analyze_and_save_structure(df, REPORTS_DIR)
