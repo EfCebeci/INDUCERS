@@ -73,20 +73,20 @@ def analyze_and_save_structure(df, reports_dir):
     print("[Makine 2.1] Tüm 'Özet Rapor' analizleri başarıyla tamamlandı.")
 
 def main():
-    print("--- INDUCERS SPRINT v9.0 (Süper-Ekmek Makinesi) BAŞLATILDI ---")
+    print("--- INDUCERS SPRINT BAŞLATILDI ---")
     
     
     df = load_rich_corpus_from_conll(RAW_DATA_PATH)
     
-    print(f"[Makine 2.1] 'Süper-Ekmek' (Zengin CSV) kaydediliyor: {RICH_DATAFRAME_PATH}")
+    print(f"[Makine 2.1] kaydediliyor: {RICH_DATAFRAME_PATH}")
     df.to_csv(RICH_DATAFRAME_PATH, index=False, encoding='utf-8')
     print("  -> 'Süper-Ekmek' kaydedildi. (Eşleştirme için bu dosyayı açın)")
     
     
     analyze_and_save_structure(df, REPORTS_DIR)
     
-    print("\n--- BISH BASH BOSH! (v9.0) ---")
-    print(f"KANITLAR (Özet Raporlar) VE 'SÜPER-EKMEK' (Zengin CSV) 'reports/' klasöründe üretildi.")
+    print("\n--- BISH BASH BOSH! ---")
+    print(f"KANITLAR (Özet Raporlar) reports/' klasöründe üretildi.")
     print(f"\nEŞLEŞTİRME İÇİN: '{RICH_DATAFRAME_PATH}' dosyasını açın.")
 
 if __name__ == "__main__":
