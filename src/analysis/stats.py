@@ -82,7 +82,6 @@ def main():
     
     analyze_and_save_structure(df, REPORTS_DIR)
     
-    print("\n--- BISH BASH BOSH! ---")
     print(f"KANITLAR (Özet Raporlar) reports/' klasöründe üretildi.")
     print(f"\nEŞLEŞTİRME İÇİN: '{RICH_DATAFRAME_PATH}' dosyasını açın.")
 
