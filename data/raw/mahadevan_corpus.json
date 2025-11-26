@@ -16,12 +16,48 @@
       "canonical": "002",
       "variants": [],
       "notes": "example sign 2"
+    },
+    {
+      "sign_id": "S322",
+      "mahadevan_no": 322,
+      "canonical": "322",
+      "variants": [],
+      "notes": "indus sign 322 – oval double-loop form"
+    },
+    {
+      "sign_id": "S342",
+      "mahadevan_no": 342,
+      "canonical": "342",
+      "variants": ["S342d"],
+      "notes": "cross-hatch or modified hatch sign"
+    },
+    {
+      "sign_id": "S008",
+      "mahadevan_no": 8,
+      "canonical": "008",
+      "variants": ["S008d"],
+      "notes": null
+    },
+    {
+      "sign_id": "S072",
+      "mahadevan_no": 72,
+      "canonical": "072",
+      "variants": ["S072d"],
+      "notes": null
+    },
+    {
+      "sign_id": "S067",
+      "mahadevan_no": 67,
+      "canonical": "067",
+      "variants": ["S067d"],
+      "notes": null
     }
   ],
 
   "inscriptions": [
+
     {
-      "id": "M-1001",
+      "id": "M-0001",
       "mahadevan_index": 1001,
       "seal_id": 103511,
       "length": 4,
@@ -35,12 +71,38 @@
         "side": null,
         "line": null,
         "dating": null,
-        "references": [],
+        "references": ["Mahadevan 1977 #1001"],
         "damaged_regions": true
       },
 
       "image_refs": [],
       "labels": {}
+    },
+
+    {
+      "id": "M-0002",
+      "mahadevan_index": 23,
+      "seal_id": null,
+      "length": 1,
+
+      "sign_ids": ["S322"],
+      "variant_ids": ["S322d"],
+
+      "metadata": {
+        "site": null,
+        "medium": null,
+        "side": null,
+        "line": null,
+        "dating": null,
+        "references": ["Mahadevan 1977 #23-1"],
+        "damaged_regions": false
+      },
+
+      "image_refs": [],
+      "labels": {
+        "is_pentagram": false
+      }
     }
+
   ]
 }
