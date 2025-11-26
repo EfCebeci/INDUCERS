@@ -21,15 +21,15 @@
       "sign_id": "S322",
       "mahadevan_no": 322,
       "canonical": "322",
-      "variants": [],
-      "notes": "indus sign 322 – oval double-loop form"
+      "variants": ["S322d"],
+      "notes": null
     },
     {
       "sign_id": "S342",
       "mahadevan_no": 342,
       "canonical": "342",
       "variants": ["S342d"],
-      "notes": "cross-hatch or modified hatch sign"
+      "notes": null
     },
     {
       "sign_id": "S008",
@@ -51,6 +51,27 @@
       "canonical": "067",
       "variants": ["S067d"],
       "notes": null
+    },
+    {
+      "sign_id": "S244",
+      "mahadevan_no": 244,
+      "canonical": "244",
+      "variants": ["S244d"],
+      "notes": null
+    },
+    {
+      "sign_id": "S373",
+      "mahadevan_no": 373,
+      "canonical": "373",
+      "variants": ["S373d"],
+      "notes": null
+    },
+    {
+      "sign_id": "S418",
+      "mahadevan_no": 418,
+      "canonical": "418",
+      "variants": [],
+      "notes": "non-canonical small dot sign; manually assigned placeholder"
     }
   ],
 
@@ -102,6 +123,29 @@
       "labels": {
         "is_pentagram": false
       }
+    },
+
+    {
+      "id": "M-0003",
+      "mahadevan_index": 1002,
+      "seal_id": 100101,
+      "length": 3,
+
+      "sign_ids": ["S244", "S373", "S418"],
+      "variant_ids": ["S244d", "S373d", "S418"],
+
+      "metadata": {
+        "site": null,
+        "medium": "seal",
+        "side": null,
+        "line": null,
+        "dating": null,
+        "references": ["Mahadevan 1977 #1002-1"],
+        "damaged_regions": true
+      },
+
+      "image_refs": [],
+      "labels": {}
     }
 
   ]
