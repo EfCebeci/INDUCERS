@@ -1,4 +1,3 @@
-```markdown
 # data/raw/
 
 Raw input files for the INDUCERS pipeline.
