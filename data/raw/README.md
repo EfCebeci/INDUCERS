@@ -1,19 +1,39 @@
-# Data Source: Universal Dependencies (Tamil-TTB)
+```markdown
+# data/raw/
 
-This directory contains the raw linguistic data used by the INDUCERS project. The files are in the CoNLL-U format.
+Raw input files for the INDUCERS pipeline.
 
-## 1. Source and Attribution
-The dataset used is the **Tamil Dependency Treebank (Tamil-TTB)**, which is part of the larger **Universal Dependencies (UD)** project.
+## Files
 
-This data was created by, and primary academic attribution must be given to:
-* **Loganathan Ramasamy** (Charles University, Prague)
+- `TamilTB.v0.1.utf8.conll`  
+  Tamil treebank in CoNLL-U format.
 
-We are using this data in accordance with its academic license to build computational models that analyze its rich, tagged structural and syntactic properties (e.g., `deprel`, `upos`).
+- `mahadevan_corpus.json`  
+  Normalized Indus corpus. Single file with all inscriptions.
 
-## 2. Citation
-Any research or product derived from this data should cite the original academic work:
+### `mahadevan_corpus.json` schema
 
-* **Ramasamy, L., & Žabokrtský, Z. (2012).** *Prague Dependency Style Treebank for Tamil.* In: Proceedings of Eighth International Conference on Language Resources and Evaluation (LREC 2012), İstanbul, Turkey.
+Top-level keys:
 
-## 3. License
-This data is made available under the **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** license.
+- `schema_version`
+- `source`
+- `sign_inventory` – list of sign definitions
+- `inscriptions` – list of inscription objects
+
+Each **sign** in `sign_inventory`:
+
+- `sign_id`: internal stable ID, e.g. `"S001"`
+- `mahadevan_no`: integer, Mahadevan sign number
+- `canonical`: string code, e.g. `"001"`
+- `variants`: list of variant codes
+- `notes`: optional comment
+
+Each **inscription** in `inscriptions`:
+
+- `id`: inscription ID, e.g. `"M-0001"`
+- `length`: number of signs
+- `sign_ids`: list of canonical sign IDs
+- `variant_ids`: list of variant codes (same length as `sign_ids`)
+- `metadata`: optional fields such as `mahadevan_index`, `site`, `medium`, `side`, `line`, `dating`, `references`
+- `image_refs`: optional list of `{id, type, path, bbox}`
+- `labels`: optional analysis labels such as `is_pentagram` or `suffix_span`

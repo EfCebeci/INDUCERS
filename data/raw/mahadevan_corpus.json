@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1",
+  "source": "Mahadevan 1977",
+  "sign_inventory": [
+    {
+      "sign_id": "S001",
+      "mahadevan_no": 1,
+      "canonical": "001",
+      "variants": ["001a", "001b"],
+      "notes": "example sign"
+    },
+    {
+      "sign_id": "S002",
+      "mahadevan_no": 2,
+      "canonical": "002",
+      "variants": [],
+      "notes": "example sign 2"
+    }
+  ],
+  "inscriptions": [
+    {
+      "id": "M-0001",
+      "length": 3,
+      "sign_ids": ["S001", "S002", "S001"],
+      "variant_ids": ["001a", "002", "001b"],
+      "metadata": {
+        "mahadevan_index": 1,
+        "site": "ExampleSite",
+        "medium": "seal",
+        "side": "obv",
+        "line": 1,
+        "dating": "Mature Harappan",
+        "references": ["Mahadevan 1977 #1"]
+      },
+      "image_refs": [],
+      "labels": {
+        "is_pentagram": false,
+        "suffix_span": [2, 3]
+      }
+    },
+    {
+      "id": "M-0002",
+      "length": 5,
+      "sign_ids": ["S002", "S001", "S001", "S002", "S001"],
+      "variant_ids": ["002", "001a", "001b", "002", "001a"],
+      "metadata": {},
+      "image_refs": [],
+      "labels": {}
+    }
+  ]
+}

@@ -1,31 +1,52 @@
-# Raporlar: Yapısal Desenlerin Deneysel Kanıtı
+# reports/
 
-## 1. Amaç
-Bu klasör, analiz motorumuz (`src/analysis/stats.py`) tarafından üretilen `.csv` formatındaki sonuç raporlarını içerir.
+This folder contains **derived** data products (CSV, figures, etc.).
+Source data lives in `data/`.
 
-Bu raporlar, YC başvurumuzun temelindeki **deneysel kanıtlardır.**
+We keep Tamil and Indus analyses strictly separate.
 
-Bu dosyalar, bizim "Hard Tech" hipotezimizi doğrular: Etiketlenmiş dil verisi (Tamil-TTB), basit sembol sıklığının (frekansının) çok ötesinde, **zengin, analiz edilebilir yapısal ve gramatik desenler** içermektedir.
+```text
+reports/
+  figures/   # Tamil – treebank-based statistics
+  indus/     # Indus – Mahadevan-based statistics
+Tamil (reports/figures/)
 
-## 2. Rapor Tanımları
-Bu dosyaların ne anlama geldiği ve neden önemli oldukları aşağıda açıklanmıştır:
+Produced from TamilTB.v0.1.utf8.conll via src/analysis/stats.py.
 
-### `00_INDUCERS_Rich_Dataframe.csv`
-* **Nedir:** `.conll` dosyalarından elde edilen, işlenmiş ve `pandas` DataFrame olarak yapılandırılmış tam veri setidir. Diğer tüm raporlar bu ana veri setinden türetilir.
+Example files:
 
-### `01_upos_frequency.csv`
-* **Nedir:** **UPOS (Universal Part of Speech - Evrensel Kelime Türü)** etiketlerinin frekans sayımıdır.
-* **Neden Önemli:** Bu rapor, dili oluşturan temel yapı taşlarını (İsim, Fiil, Sıfat, Zamir vb.) gösterir. Bu, gramer analizinin ilk katmanıdır.
+00_INDUCERS_Rich_Dataframe.csv
 
-### `02_lemma_frequency.csv`
-* **Nedir:** **Lemma** (kelimelerin kök/sözlük hali) frekans sayımıdır.
-* **Neden Önemli:** Bu bize, metindeki temel *kavramları* (örn: "kral", "su", "gitmek"), o kelimenin cümle içindeki çekiminden (örn: "gidiyor", "gitti") bağımsız olarak gösterir.
+01_upos_frequency.csv
 
-### `03_deprel_frequency.csv` (En Önemli Rapor)
-* **Nedir:** **DEPREL (Dependency Relations - Bağımlılık İlişkileri)** frekans sayımıdır.
-* **Neden Önemli (Bizim "Hack"imiz Budur):** Bu, dilin derin gramer "mimari planıdır". Bize kelimelerin cümle içindeki *işlevini* ve *ilişkisini* söyler:
-    * `nsubj`: Özne (Eylemi *yapan*)
-    * `obj`: Nesne (Eylemden *etkilenen*)
-    * `iobj`: Dolaylı Tümleç
-    * `advmod`: Belirteç (Zarf)
-* **Bu veri, bizim sadece sembolleri değil, dilin karmaşık *gramer kurallarını* da sayısallaştırabildiğimizi kanıtlar. Bizim YZ modellerimiz (GNN/Transformer) tam olarak bu yapısal veri üzerine eğitilecektir.**
+02_lemma_frequency.csv
+
+03_deprel_frequency.csv
+
+Indus (reports/indus/)
+
+Produced from mahadevan_corpus.json via:
+
+python -m src.analysis.indus_freq   --corpus data/raw/mahadevan_corpus.json --out reports/indus
+python -m src.analysis.indus_suffix --corpus data/raw/mahadevan_corpus.json --out reports/indus
+
+
+On each run, existing reports/indus/*.csv files are overwritten.
+
+File overview (≤ 5 sign inscriptions only):
+
+01_indus_sign_freq_penta.csv
+
+02_indus_bigram_freq_penta.csv
+
+03_indus_trigram_freq_penta.csv
+
+04_indus_suffix_sign_freq_penta.csv
+
+05_indus_positional_freq_penta.csv
+
+06_indus_suffix_stats_penta.csv
+
+07_indus_final_bigram_penta.csv
+
+08_indus_final_trigram_penta.csv
