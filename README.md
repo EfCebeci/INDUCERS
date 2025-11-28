@@ -58,22 +58,6 @@ This repository is the live technical proof-of-execution.
 
 ---
 
-## **Our 3-Stage Roadmap**
-
-### **Stage 1 — Nov 2025: The Semantic Bridge**
-
-Finalize `indus_to_tamil_map.json`.
-Bridge unsolved Indus signs to Dravidian grammatical structure.
-
-### **Stage 2 — YC Batch: The Core AI Model**
-
-Train first GNN/Transformer models for Indus structural prediction.
-YC funding (~$125k) → GPU compute.
-
-### **Stage 3 — Day 120: API Beta Launch**
-
-Launch analysis API to university design partners.
-
 ---
 
 # **Technical Usage (Data & Analysis)**
