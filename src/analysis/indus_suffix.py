@@ -98,22 +98,33 @@ def main(
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    #SADECE SUFFIX DOSYALARINI SİL (prefix 06–09)
+    for p in out_dir.glob("0[6-9]_indus_*.csv"):
+        p.unlink()
+
+    # 06 – suffix stats
     write_suffix_stats_csv(
         stats,
         out_dir / "06_indus_suffix_stats_penta.csv",
         min_final=min_final,
         suffix_ratio_threshold=suffix_ratio_threshold,
     )
+
+    # 07 – final bigrams
     write_ngram_csv(
         stats["final_bigram"],
         out_dir / "07_indus_final_bigram_penta.csv",
         "final_bigram",
     )
+
+    # 08 – final trigrams
     write_ngram_csv(
         stats["final_trigram"],
         out_dir / "08_indus_final_trigram_penta.csv",
-        "final_trigram",
+        "trigram_final",
     )
+
+    print("Suffix analysis complete. Files written to:", out_dir)
 
 
 if __name__ == "__main__":

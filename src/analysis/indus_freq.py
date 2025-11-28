@@ -22,11 +22,7 @@ def iter_sign_sequences(inscriptions: List[dict], key: str = "sign_ids"):
         yield ins.get("id") or ins.get("insc_id"), seq
 
 
-def compute_frequencies(
-    inscriptions: List[dict],
-    max_len: int = 5,
-    key: str = "sign_ids",
-):
+def compute_frequencies(inscriptions: List[dict], max_len: int = 5, key: str = "sign_ids"):
     sign_freq: Counter[str] = Counter()
     bigram_freq: Counter[Tuple[str, str]] = Counter()
     trigram_freq: Counter[Tuple[str, str, str]] = Counter()
@@ -72,33 +68,26 @@ def write_counter_csv(counter, path: str | Path, header: str):
             f.write(f"{key_str},{cnt}\n")
 
 
-def main(
-    corpus_path: str = "data/raw/mahadevan_corpus.json",
-    out_dir: str = "reports/indus",
-):
+def main(corpus_path: str = "data/raw/mahadevan_corpus.json", out_dir: str = "reports/indus"):
     ins = load_inscriptions(corpus_path)
     freqs = compute_frequencies(ins, max_len=5, key="sign_ids")
 
     out_dir = Path(out_dir)
-    # Eski INDUS analizlerini sil
-    if out_dir.exists():
-        for p in out_dir.glob("*.csv"):
-            p.unlink()
+
+    # SADECE FREQUENCY RAPORLARINI SİL (01–09 prefix)
+    for p in out_dir.glob("0*_indus_*_penta.csv"):
+        p.unlink()
 
     write_counter_csv(freqs["sign"], out_dir / "01_indus_sign_freq_penta.csv", "sign")
     write_counter_csv(freqs["bigram"], out_dir / "02_indus_bigram_freq_penta.csv", "bigram")
     write_counter_csv(freqs["trigram"], out_dir / "03_indus_trigram_freq_penta.csv", "trigram")
     write_counter_csv(freqs["suffix"], out_dir / "04_indus_suffix_sign_freq_penta.csv", "suffix")
 
-    # pozisyonel frekanslar: pos, sign, count
     pos_path = out_dir / "05_indus_positional_freq_penta.csv"
     pos_counter = freqs["pos"]
-    pos_path.parent.mkdir(parents=True, exist_ok=True)
     with pos_path.open("w", encoding="utf-8", newline="") as f:
         f.write("position,sign,count\n")
-        for (pos, sign), cnt in sorted(
-            pos_counter.items(), key=lambda x: (-x[1], x[0][0])
-        ):
+        for (pos, sign), cnt in sorted(pos_counter.items(), key=lambda x: (-x[1], x[0][0])):
             f.write(f"{pos},{sign},{cnt}\n")
 
 
