@@ -123,6 +123,41 @@
       "canonical": "086",
       "variants": ["S086d"],
       "notes": null
+    },
+    {
+      "sign_id": "S245",
+      "mahadevan_no": 245,
+      "canonical": "245",
+      "variants": ["S245d"],
+      "notes": null
+    },
+    {
+      "sign_id": "S075",
+      "mahadevan_no": 75,
+      "canonical": "075",
+      "variants": [],
+      "notes": null
+    },
+    {
+      "sign_id": "S343",
+      "mahadevan_no": 343,
+      "canonical": "343",
+      "variants": ["S343d"],
+      "notes": null
+    },
+    {
+      "sign_id": "S127",
+      "mahadevan_no": 127,
+      "canonical": "127",
+      "variants": ["S127d"],
+      "notes": null
+    },
+    {
+      "sign_id": "S059",
+      "mahadevan_no": 59,
+      "canonical": "059",
+      "variants": ["S059d"],
+      "notes": null
     }
 
   ],
@@ -239,6 +274,31 @@
       "image_refs": [],
       "labels": {
         "rare_signs": ["S055"],
+        "is_pentagram": false
+      }
+    },
+
+    {
+      "id": "M-0005",
+      "mahadevan_index": 1004,
+      "seal_id": 100101,
+      "length": 7,
+
+      "sign_ids": ["S245", "S245", "S075", "S343", "S245", "S127", "S059"],
+      "variant_ids": ["S245d", "S245d", "S075", "S343d", "S245d", "S127d", "S059d"],
+
+      "metadata": {
+        "site": null,
+        "medium": "seal",
+        "side": null,
+        "line": null,
+        "dating": null,
+        "references": ["Mahadevan 1977 #1004-1"],
+        "damaged_regions": false
+      },
+
+      "image_refs": [],
+      "labels": {
         "is_pentagram": false
       }
     }
