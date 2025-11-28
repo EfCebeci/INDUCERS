@@ -17,6 +17,7 @@
       "variants": [],
       "notes": "example sign 2"
     },
+
     {
       "sign_id": "S322",
       "mahadevan_no": 322,
@@ -72,8 +73,64 @@
       "canonical": "418",
       "variants": [],
       "notes": "non-canonical small dot sign; manually assigned placeholder"
+    },
+
+    {
+      "sign_id": "S211",
+      "mahadevan_no": 211,
+      "canonical": "211",
+      "variants": [],
+      "notes": null
+    },
+    {
+      "sign_id": "S089",
+      "mahadevan_no": 89,
+      "canonical": "089",
+      "variants": ["S089d"],
+      "notes": null
+    },
+    {
+      "sign_id": "S336",
+      "mahadevan_no": 336,
+      "canonical": "336",
+      "variants": ["S336d"],
+      "notes": null
+    },
+    {
+      "sign_id": "S099",
+      "mahadevan_no": 99,
+      "canonical": "099",
+      "variants": [],
+      "notes": null
+    },
+    {
+      "sign_id": "S267",
+      "mahadevan_no": 267,
+      "canonical": "267",
+      "variants": ["S267d"],
+      "notes": null
+    },
+    {
+      "sign_id": "S055",
+      "mahadevan_no": 55,
+      "canonical": "055",
+      "variants": ["S055d"],
+      "notes": "rare sign; proper-noun candidate"
+    },
+    {
+      "sign_id": "S086",
+      "mahadevan_no": 86,
+      "canonical": "086",
+      "variants": ["S086d"],
+      "notes": null
     }
+
   ],
+
+
+
+
+
 
   "inscriptions": [
 
@@ -97,7 +154,9 @@
       },
 
       "image_refs": [],
-      "labels": {}
+      "labels": {
+        "is_pentagram": false
+      }
     },
 
     {
@@ -145,7 +204,43 @@
       },
 
       "image_refs": [],
-      "labels": {}
+      "labels": {
+        "is_pentagram": false
+      }
+    },
+
+
+    {
+      "id": "M-0004",
+      "mahadevan_index": 1003,
+      "seal_id": 100101,
+      "length": 9,
+
+      "sign_ids": [
+        "S211", "S089", "S336", "S072",
+        "S099", "S267", "S055", "S086", "S418"
+      ],
+
+      "variant_ids": [
+        "S211", "S089d", "S336d", "S072d",
+        "S099", "S267d", "S055d", "S086d", "S418"
+      ],
+
+      "metadata": {
+        "site": null,
+        "medium": "seal",
+        "side": null,
+        "line": null,
+        "dating": null,
+        "references": ["Mahadevan 1977 #1003-1"],
+        "damaged_regions": true
+      },
+
+      "image_refs": [],
+      "labels": {
+        "rare_signs": ["S055"],
+        "is_pentagram": false
+      }
     }
 
   ]
