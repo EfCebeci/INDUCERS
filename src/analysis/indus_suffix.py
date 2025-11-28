@@ -7,6 +7,9 @@ from typing import Dict, List, Tuple
 
 
 def load_inscriptions(path: str | Path) -> List[dict]:
+    """
+    mahadevan_corpus.json içinden inscriptions listesini yükler.
+    """
     path = Path(path)
     with path.open("r", encoding="utf-8") as f:
         data = json.load(f)
@@ -20,6 +23,14 @@ def compute_suffix_stats(
     max_len: int = 5,
     key: str = "sign_ids",
 ):
+    """
+    max_len uzunluğa kadar olan yazıtlar için:
+      - sign_total: işaret toplam görülme sayısı
+      - sign_final: işaretin son pozisyonda görülme sayısı
+      - final_bigram: son iki işaret bigram frekansı
+      - final_trigram: son üç işaret trigram frekansı
+      - position_sum: her işaret için pozisyonların toplamı (ortalama pozisyon hesaplamak için)
+    """
     sign_total: Counter[str] = Counter()
     sign_final: Counter[str] = Counter()
     final_bigram: Counter[Tuple[str, str]] = Counter()
@@ -29,18 +40,24 @@ def compute_suffix_stats(
     for ins in inscriptions:
         seq = [str(x) for x in ins.get(key) or []]
         L = len(seq)
+        # Pentagrama kadar: sadece 1–max_len arası uzunlukları al
         if L == 0 or L > max_len:
             continue
 
+        # Toplam frekans ve pozisyon toplamı
         sign_total.update(seq)
         for pos, s in enumerate(seq):
             position_sum[s] += pos
 
+        # Terminal işaret
         last = seq[-1]
         sign_final[last] += 1
 
+        # Son bigram
         if L >= 2:
             final_bigram[(seq[-2], seq[-1])] += 1
+
+        # Son trigram
         if L >= 3:
             final_trigram[(seq[-3], seq[-2], seq[-1])] += 1
 
@@ -59,6 +76,15 @@ def write_suffix_stats_csv(
     min_final: int = 3,
     suffix_ratio_threshold: float = 0.7,
 ):
+    """
+    Her işaret için:
+      - total_count
+      - final_count
+      - final_ratio (final_count / total_count)
+      - avg_position
+      - is_suffix_candidate (1/0)
+    yazar.
+    """
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -77,6 +103,11 @@ def write_suffix_stats_csv(
 
 
 def write_ngram_csv(counter: Counter, path: str | Path, header: str):
+    """
+    Bigram / trigram counter'ı:
+      <header>,count
+    formatında yazar.
+    """
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as f:
@@ -89,20 +120,21 @@ def write_ngram_csv(counter: Counter, path: str | Path, header: str):
 def main(
     corpus_path: str = "data/raw/mahadevan_corpus.json",
     out_dir: str = "reports/indus",
+    max_len: int = 5,
     min_final: int = 3,
     suffix_ratio_threshold: float = 0.7,
 ):
-    ins = load_inscriptions(corpus_path)
-    stats = compute_suffix_stats(ins, max_len=5, key="sign_ids")
+    inscriptions = load_inscriptions(corpus_path)
+    stats = compute_suffix_stats(inscriptions, max_len=max_len, key="sign_ids")
 
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    #SADECE SUFFIX DOSYALARINI SİL (prefix 06–09)
-    for p in out_dir.glob("0[6-9]_indus_*.csv"):
+    #SADECE SUFFIX DOSYALARINI SİL (06–08 prefix, *_penta.csv)
+    for p in out_dir.glob("0[6-8]_indus_*_penta.csv"):
         p.unlink()
 
-    # 06 – suffix stats
+    # 06 – suffix istatistikleri
     write_suffix_stats_csv(
         stats,
         out_dir / "06_indus_suffix_stats_penta.csv",
@@ -110,21 +142,21 @@ def main(
         suffix_ratio_threshold=suffix_ratio_threshold,
     )
 
-    # 07 – final bigrams
+    # 07 – final bigramlar
     write_ngram_csv(
         stats["final_bigram"],
         out_dir / "07_indus_final_bigram_penta.csv",
         "final_bigram",
     )
 
-    # 08 – final trigrams
+    # 08 – final trigramlar
     write_ngram_csv(
         stats["final_trigram"],
         out_dir / "08_indus_final_trigram_penta.csv",
-        "trigram_final",
+        "final_trigram",
     )
 
-    print("Suffix analysis complete. Files written to:", out_dir)
+    print(f"Suffix analysis complete (≤{max_len} signs). Files written to: {out_dir}")
 
 
 if __name__ == "__main__":
@@ -133,6 +165,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--corpus", default="data/raw/mahadevan_corpus.json")
     parser.add_argument("--out", default="reports/indus")
+    parser.add_argument("--max-len", type=int, default=5)
     parser.add_argument("--min-final", type=int, default=3)
     parser.add_argument("--suffix-ratio", type=float, default=0.7)
     args = parser.parse_args()
@@ -140,6 +173,7 @@ if __name__ == "__main__":
     main(
         corpus_path=args.corpus,
         out_dir=args.out,
+        max_len=args.max_len,
         min_final=args.min_final,
         suffix_ratio_threshold=args.suffix_ratio,
     )
