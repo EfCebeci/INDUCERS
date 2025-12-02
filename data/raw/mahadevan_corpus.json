@@ -302,6 +302,115 @@
         "is_pentagram": false
       }
     }
-
+    ,
+    {
+    "id": "M-0006",
+    "mahadevan_index": 1005,
+    "seal_id": 100101,
+    "length": 2,
+    "sign_ids": [
+        "S342",
+        "S296"
+    ],
+    "variant_ids": [
+        "S342d",
+        "S296d"
+    ],
+    "metadata": {
+        "site": null,
+        "medium": "seal",
+        "side": null,
+        "line": null,
+        "dating": null,
+        "references": [
+            "Mahadevan 1977 #1005-1"
+        ],
+        "damaged_regions": true
+    },
+    "image_refs": [],
+    "labels": {
+        "is_pentagram": false
+    }
+    }
+    ,
+    {
+    "id": "M-0007",
+    "mahadevan_index": 1006,
+    "seal_id": 100101,
+    "length": 11,
+    "sign_ids": [
+        "S169",
+        "S124",
+        "S155",
+        "S087",
+        "S089",
+        "S336",
+        "S065",
+        "S389",
+        "S099",
+        "S081",
+        "S233"
+    ],
+    "variant_ids": [
+        "S169d",
+        "S124d",
+        "S155d",
+        "S087d",
+        "S089d",
+        "S336d",
+        "S065",
+        "S389d",
+        "S099",
+        "S081d",
+        "S233"
+    ],
+    "metadata": {
+        "site": null,
+        "medium": "seal",
+        "side": null,
+        "line": null,
+        "dating": null,
+        "references": [
+            "Mahadevan 1977 #1006-1"
+        ],
+        "damaged_regions": true
+    },
+    "image_refs": [],
+    "labels": {
+        "is_pentagram": false
+    }
+    }
+      ,
+    {
+    "id": "M-0008",
+    "mahadevan_index": 1007,
+    "seal_id": 100101,
+    "length": 3,
+    "sign_ids": [
+        "S162",
+        "S109",
+        "S418"
+    ],
+    "variant_ids": [
+        "S162d",
+        "S109d",
+        "S418"
+    ],
+    "metadata": {
+        "site": null,
+        "medium": "seal",
+        "side": null,
+        "line": null,
+        "dating": null,
+        "references": [
+            "Mahadevan 1977 #1007-1"
+        ],
+        "damaged_regions": true
+    },
+    "image_refs": [],
+    "labels": {
+        "is_pentagram": false
+    }
+    }
   ]
 }
