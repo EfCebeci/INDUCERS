@@ -14,31 +14,30 @@ def load_rich_corpus_from_conll(filepath):
 
     print(f"[Makine 2.1] ({filepath}) yükleniyor...")
     
-    try:
-        data_file = open(filepath, "r", encoding="utf-8")
-    except Exception as e:
-        print(f"[Makine 2.1] HATA: {e}")
-        sys.exit(1)
-
-    print("[Makine 2.1] (.conll) 'Pandas' (DataFrame) haline getiriliyor...")
     parsed_data = []
-    
-    for sentence_index, tokenlist in enumerate(parse_incr(data_file)):
-        sentence_id = tokenlist.metadata.get('sent_id', f's{sentence_index+1}')
-        for token in tokenlist:
-            
-            row = {
-                'sentence_id': sentence_id,
-                'token_id': token['id'],
-                'form': token['form'],     
-                'lemma': token['lemma'],   
-                'upos': token['upos'],     
-                'deprel': token['deprel'], 
-                'head': token['head'],     
-            }
-            parsed_data.append(row)
-    
-    data_file.close()
+    print("[Makine 2.1] (.conll) 'Pandas' (DataFrame) haline getiriliyor...")
+
+    try:
+        with open(filepath, "r", encoding="utf-8") as data_file:
+            for sentence_index, tokenlist in enumerate(parse_incr(data_file)):
+                sentence_id = tokenlist.metadata.get('sent_id', f's{sentence_index+1}')
+                for token in tokenlist:
+                    row = {
+                        'sentence_id': sentence_id,
+                        'token_id': token['id'],
+                        'form': token['form'],
+                        'lemma': token['lemma'],
+                        'upos': token['upos'],
+                        'deprel': token['deprel'],
+                        'head': token['head'],
+                    }
+                    parsed_data.append(row)
+    except FileNotFoundError:
+        print(f"[Makine 2.1] HATA: Dosya bulunamadı -> {filepath}")
+        sys.exit(1)
+    except Exception as e:
+        print(f"[Makine 2.1] HATA: Dosya işlenirken bir hata oluştu: {e}")
+        sys.exit(1)
     
     df = pd.DataFrame(parsed_data)
     print(f"[Makine 2.1] BAŞARILI! {len(df)} 'zengin' sembol/token yüklendi.")

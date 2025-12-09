@@ -1,5 +1,2 @@
 pandas
-numpy
-tqdm
-scikit-learn
-jupyter
+conllu
