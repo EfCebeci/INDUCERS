@@ -412,5 +412,87 @@
         "is_pentagram": false
     }
     }
+    ,
+{
+    "id": "M-0009",
+    "mahadevan_index": 1008,
+    "seal_id": 100101,
+    "length": 8,
+    "sign_ids": [
+        "S211",
+        "S089",
+        "S336",
+        "S067",
+        "S059",
+        "S087",
+        "S402",
+        "S076"
+    ],
+    "variant_ids": [
+        "S211",
+        "S089d",
+        "S336d",
+        "S067d",
+        "S059d",
+        "S087d",
+        "S402d",
+        "S076d"
+    ],
+    "metadata": {
+        "site": null,
+        "medium": "seal",
+        "side": null,
+        "line": null,
+        "dating": null,
+        "references": [
+            "Mahadevan 1977 #1008-1"
+        ],
+        "damaged_regions": false
+    },
+    "image_refs": [],
+    "labels": {
+        "is_pentagram": false
+    }
+}
+,
+{
+    "id": "M-0010",
+    "mahadevan_index": 1010,
+    "seal_id": 100101,
+    "length": 6,
+    "sign_ids": [
+        "S342",
+        "S008",
+        "S171",
+        "S048",
+        "S099",
+        "S391"
+    ],
+    "variant_ids": [
+        "S342d",
+        "S008d",
+        "S171d",
+        "S048d",
+        "S099",
+        "S391d"
+    ],
+    "metadata": {
+        "site": null,
+        "medium": "seal",
+        "side": null,
+        "line": null,
+        "dating": null,
+        "references": [
+            "Mahadevan 1977 #1010-1"
+        ],
+        "damaged_regions": false
+    },
+    "image_refs": [],
+    "labels": {
+        "is_pentagram": false
+    }
+}
+
   ]
+  
 }
